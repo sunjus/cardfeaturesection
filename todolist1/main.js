@@ -12,12 +12,21 @@ function addNewItem(){
 */
 
 var btnNew=document.getElementById('btnAdd');
-btnNew.onClick=function(){
-    addNewItem(document.getElementById('todolist'));
-};
 
-Function addNewItem(list){
+
+Function addNewItem(list, itemText){
     var listItem=document.createElement('li');
-    listItem.innerText='Hello';
+    listItem.innerText=itemText;
     list.appendChild(listItem);
 }
+
+var btnNew=document.getElementById('btnAdd');
+
+btnNew.onClick=function(){
+    var inputText=document.getElementById('inputText');
+    var itemText=inputText.nodeValue;
+
+    if(!itemText || itemText===""||itemText==="") return false;//blank방지
+
+    addNewItem(document.getElementById('todolist'), itemText);
+};
